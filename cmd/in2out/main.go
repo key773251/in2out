@@ -40,6 +40,7 @@ func main() {
 		os.Exit(1)
 	}
 
+	// Get the parser from the factory and parse the file
 	parser, err := parsers.GetParser(inputFileExt)
 	var inputData any
 
@@ -53,6 +54,7 @@ func main() {
 		fmt.Println("\nInput Data:", inputData)
 	}
 
+	// Get the converter from the factory and convert the data
 	converter, err := converters.GetConverter(outputFileExt)
 
 	if err != nil {
@@ -66,7 +68,7 @@ func main() {
 			fmt.Println(err)
 			os.Exit(1)
 		} else {
-			fmt.Println("\nData:", outputData)
+			fmt.Println("\nOutput Data:", string(outputData))
 			ioutil.WriteFile(*outputFile, outputData, 0644)
 		}
 	}

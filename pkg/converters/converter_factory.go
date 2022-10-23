@@ -10,6 +10,7 @@ import (
 func getSupportedConverters() map[string]func() Converter {
 	return map[string]func() Converter{
 		"json": newJsonConverter,
+		"yaml": newYamlConverter,
 	}
 }
 
