@@ -18,4 +18,5 @@ func main() {
 
 	fmt.Println("Input File: ", *inputFile)
 	fmt.Println("Output File: ", *outputFile)
+	fmt.Println("-------------------------------")
 }
