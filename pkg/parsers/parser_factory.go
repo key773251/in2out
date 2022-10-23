@@ -10,6 +10,7 @@ import (
 func getSupportedParsers() map[string]func() Parser {
 	return map[string]func() Parser{
 		"json": newJsonParser,
+		"yaml": newYamlParser,
 	}
 }
 

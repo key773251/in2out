@@ -7,6 +7,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/key773251/in2out/pkg/converters"
 	"github.com/key773251/in2out/pkg/parsers"
 )
 
@@ -45,8 +46,22 @@ func main() {
 		os.Exit(1)
 	} else {
 		fmt.Printf("\nUsing %s file parser.", inputFileExt)
-		parser.Parse(contents, &data)
+		inputData := parser.Parse(contents, &data)
 
-		fmt.Println("\nData:", data)
+		fmt.Println("\nData:", inputData)
 	}
+
+	converter, err := converters.GetConverters(inputFileExt)
+
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	} else {
+		fmt.Printf("\nUsing %s file parser.", inputFileExt)
+		inputData := parser.Parse(contents, &data)
+
+		fmt.Println("\nData:", inputData)
+	}
+
+	//ioutil.WriteFile("test.json", jsonData, 0644)
 }
