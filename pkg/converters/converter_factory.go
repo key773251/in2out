@@ -23,5 +23,5 @@ func GetConverter(fileType string) (Converter, error) {
 		return parser, nil
 	}
 
-	return nil, fmt.Errorf("output file type '%s' not currently supported.\n  Supported file types are: %s", fileType, maps.Keys(converterMap))
+	return nil, fmt.Errorf("output file type '%s' not currently supported. Supported file types are: %s", fileType, maps.Keys(converterMap))
 }

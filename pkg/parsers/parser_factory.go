@@ -33,5 +33,5 @@ func GetParser(fileType string, extVars map[string]string) (Parser, error) {
 		return parser, nil
 	}
 
-	return nil, fmt.Errorf("input file type '%s' not currently supported.\n  Supported file types are: %s", fileType, maps.Keys(parserMap))
+	return nil, fmt.Errorf("input file type '%s' not currently supported. Supported file types are: %s", fileType, maps.Keys(parserMap))
 }
