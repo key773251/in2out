@@ -9,7 +9,7 @@ import (
 type Parser struct {
 }
 
-func (p Parser) parse(file string) error {
+func (p Parser) Parse(file string) error {
 	data := map[string]interface{}{}
 	contents, err := ioutil.ReadFile(file)
 	if err != nil {

@@ -4,6 +4,8 @@ import (
 	"flag"
 	"fmt"
 	"os"
+
+	"github.com/key773251/in2out/pkg/parsers"
 )
 
 func main() {
@@ -19,4 +21,7 @@ func main() {
 	fmt.Println("Input File: ", *inputFile)
 	fmt.Println("Output File: ", *outputFile)
 	fmt.Println("-------------------------------")
+
+	parser := parsers.Parser{}
+	parser.Parse(*inputFile)
 }
