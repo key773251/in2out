@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"strings"
 
@@ -26,14 +27,26 @@ func main() {
 	fmt.Println("in2out version:", version)
 
 	fmt.Println("\nInput File:", *inputFile)
-	fmt.Println("Input File Extension:", inputFileExt)
 	fmt.Println("Output File:", *outputFile)
+
+	// Try to read the file
+	data := map[string]interface{}{}
+	contents, err := ioutil.ReadFile(*inputFile)
+
+	if err != nil {
+		fmt.Println("\nFailed to", err)
+		os.Exit(1)
+	}
 
 	parser, err := parsers.GetParser(inputFileExt)
 
 	if err != nil {
 		fmt.Println(err)
+		os.Exit(1)
 	} else {
-		parser.Parse(*inputFile)
+		fmt.Printf("\nUsing %s file parser.", inputFileExt)
+		parser.Parse(contents, &data)
+
+		fmt.Println("\nData:", data)
 	}
 }

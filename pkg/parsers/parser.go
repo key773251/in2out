@@ -1,5 +1,5 @@
 package parsers
 
 type Parser interface {
-	Parse(file string) error
+	Parse([]byte, any) error
 }
