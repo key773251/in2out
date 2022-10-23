@@ -8,7 +8,7 @@ type JsonConverter struct {
 }
 
 // Converts passed in data to json data
-func (jc JsonConverter) Convert(data any) (any, error) {
+func (jc JsonConverter) Convert(data any) ([]byte, error) {
 	jsonData, err := json.MarshalIndent(data, "", "  ")
 
 	return jsonData, err

@@ -13,7 +13,7 @@ func getSupportedConverters() map[string]func() Converter {
 	}
 }
 
-func GetParser(fileType string) (Converter, error) {
+func GetConverter(fileType string) (Converter, error) {
 	converterMap := getSupportedConverters()
 
 	if _, ok := converterMap[fileType]; ok {
@@ -22,5 +22,5 @@ func GetParser(fileType string) (Converter, error) {
 		return parser, nil
 	}
 
-	return nil, fmt.Errorf("output file type '%s' not currently supported.\n Supported file types are: %s", fileType, maps.Keys(converterMap))
+	return nil, fmt.Errorf("output file type '%s' not currently supported.\n  Supported file types are: %s", fileType, maps.Keys(converterMap))
 }

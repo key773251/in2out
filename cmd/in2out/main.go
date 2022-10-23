@@ -24,6 +24,7 @@ func main() {
 	}
 
 	inputFileExt := strings.Split(*inputFile, ".")[1]
+	outputFileExt := strings.Split(*outputFile, ".")[1]
 
 	fmt.Println("in2out version:", version)
 
@@ -40,28 +41,33 @@ func main() {
 	}
 
 	parser, err := parsers.GetParser(inputFileExt)
+	var inputData any
 
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	} else {
 		fmt.Printf("\nUsing %s file parser.", inputFileExt)
-		inputData := parser.Parse(contents, &data)
+		inputData = parser.Parse(contents, &data)
 
-		fmt.Println("\nData:", inputData)
+		fmt.Println("\nInput Data:", inputData)
 	}
 
-	converter, err := converters.GetConverters(inputFileExt)
+	converter, err := converters.GetConverter(outputFileExt)
 
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	} else {
-		fmt.Printf("\nUsing %s file parser.", inputFileExt)
-		inputData := parser.Parse(contents, &data)
+		fmt.Printf("\nUsing %s data converter.", outputFileExt)
+		outputData, err := converter.Convert(inputData)
 
-		fmt.Println("\nData:", inputData)
+		if err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		} else {
+			fmt.Println("\nData:", outputData)
+			ioutil.WriteFile(*outputFile, outputData, 0644)
+		}
 	}
-
-	//ioutil.WriteFile("test.json", jsonData, 0644)
 }

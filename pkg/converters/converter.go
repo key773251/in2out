@@ -1,5 +1,5 @@
 package converters
 
 type Converter interface {
-	Convert(any) (any, error)
+	Convert(any) ([]byte, error)
 }
