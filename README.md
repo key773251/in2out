@@ -41,3 +41,9 @@ in2out version:0.1.0
   -o string
         Output file path (Required)
 ```
+
+</br>
+
+# Contributing
+If you already can't tell from the code, I am a complete novice when it comes to using go. 
+I am open to any feedback/collaboration that anyone would like to provide :)
